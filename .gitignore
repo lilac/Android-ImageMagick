@@ -1,0 +1,8 @@
+*.o
+*.o.d
+*~
+*.html
+*.deps*
+*.swp
+*.svn*
+*.class
