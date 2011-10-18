@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Hello World, AndroidMagickActivity!</string>
     <string name="app_name">Android-Magick</string>
+    <string name="effects_prompt">Choose an effect</string>
 </resources>

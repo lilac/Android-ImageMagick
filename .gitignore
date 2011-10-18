@@ -6,3 +6,4 @@
 *.swp
 *.svn*
 *.class
+bin/*

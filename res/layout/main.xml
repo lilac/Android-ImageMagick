@@ -9,4 +9,14 @@
     android:layout_height="wrap_content" 
     android:text="@string/hello"
     />
+<Spinner android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+	android:id="@+id/spinner"
+	android:prompt="@string/effects_prompt">
+</Spinner>
+
+<ImageView android:layout_height="wrap_content"
+android:layout_width="wrap_content"
+android:id="@+id/imageView">
+</ImageView>
 </LinearLayout>
