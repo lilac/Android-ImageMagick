@@ -15,6 +15,7 @@ public final class R {
     }
     public static final class drawable {
         public static final int icon=0x7f020000;
+        public static final int images=0x7f020001;
     }
     public static final class id {
         public static final int imageView=0x7f070001;

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
     <resources>
         <string-array name="effects">
+        	<item>No Effect</item>
             <item>Uniform Noise</item>
             <item>Gaussian Noise</item>
             <item>Multiplicative Gaussian Noise</item>
             <item>Impulse Noise</item>
             <item>Laplacian Noise</item>
             <item>Poisson Noise</item>
+            <item>Blur</item>
+            <item>Charcoal</item>
+            <item>Edge</item>
         </string-array>
     </resources>

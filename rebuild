@@ -1,0 +1,5 @@
+NDK=~/sdk/android-ndk-r6b/
+export NDK_MODULE_PATH=$PWD/ndk-modules
+cd jni
+$NDK/ndk-build clean
+$NDK/ndk-build

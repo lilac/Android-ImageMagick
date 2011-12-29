@@ -1,11 +1,15 @@
 package magick.util;
 
 import java.awt.Dimension;
+import java.io.ByteArrayOutputStream;
 import java.nio.ByteBuffer;
 
+import magick.ImageInfo;
 import magick.MagickException;
 import magick.MagickImage;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.os.Handler;
 public class MagickBitmap {
 
 	public static Bitmap ToBitmap(MagickImage img) throws MagickException {
@@ -14,14 +18,32 @@ public class MagickBitmap {
 		int count = width * height * 4;
 		byte pixels[] = new byte[count];
 		
-		boolean res = img.dispatchImage(0, 0, width, height, "ARGB", pixels);
-		//int colors[] = bytesToInts(pixels);
-		int colors[] = toIntArray(pixels);
+		/* Because Java use big edian, when calling native bytesToInts, 
+		 * we must reverse the order of ARGB. */
+		boolean res = img.dispatchImage(0, 0, width, height, "BGRA", pixels);
+		int colors[] = bytesToInts(pixels);
+		//int colors[] = toIntArray(pixels);
 		if (res) {
 			return Bitmap.createBitmap(colors, width, height, Bitmap.Config.ARGB_8888);
 		}
 		else return null;
 	}
+	
+	public static MagickImage fromBitmap(Bitmap bmp) throws MagickException {
+		/*
+		int width = bmp.getWidth();
+		int height = bmp.getHeight();
+		int count = width * height;
+		int pixels[] = new int[count];
+		bmp.getPixels(pixels, 0, width, 0, 0, width, height);*/
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		bmp.compress(CompressFormat.JPEG, 80, bos);
+		ImageInfo info = new ImageInfo();
+		info.setMagick("jpeg");
+		MagickImage image = new MagickImage(info, bos.toByteArray());
+		return image;
+	}
+	
 	public static int[] toIntArray(byte[] barr) { 
         //Pad the size to multiple of 4 
         int size = (barr.length / 4) + ((barr.length % 4 == 0) ? 0 : 1);      

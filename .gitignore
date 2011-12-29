@@ -7,3 +7,5 @@
 *.svn*
 *.class
 bin/*
+obj
+libs
